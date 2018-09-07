@@ -1,8 +1,9 @@
 var canvas = document.querySelector('canvas');
+var c = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-var c = canvas.getContext('2d');
+
 
 //random colour choices for the balls
 colourList = [
@@ -46,7 +47,7 @@ function Circle(x, y, dx, dy, radius) {
         }
 
         if (this.x + this.radius + this.dx >= innerWidth || this.x - this.radius <= 0) {
-            this.dx = -this.dx * friction;
+            this.dx = -this.dx;
         }
 
         this.y += this.dy;
@@ -61,7 +62,7 @@ var circleList = [];
 
 function init() {
     circleList = [];
-    for (var i = 0; i < 200; ++i) {
+    for (var i = 0; i < 100; ++i) {
 
         var radius = (Math.random() * 10) * 5;
         var x = Math.random() * (innerWidth - radius * 2) + radius;
@@ -84,7 +85,6 @@ function animate() {
     }
 }
 
-console.log(innerWidth);
 init();
 animate();
 
